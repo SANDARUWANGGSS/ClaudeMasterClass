@@ -1,0 +1,83 @@
+@reference "../../app/globals.css";
+
+.card {
+  background-color: #0A101D;
+  border: 1px solid rgba(194, 122, 255, 0.15);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(194, 122, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.titleLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.titleLink:hover {
+  text-decoration: underline;
+}
+
+.badge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  color: #030712;
+}
+
+.badgeSuccess {
+  background-color: #05DF72;
+}
+
+.badgeFailure {
+  background-color: #FF6467;
+}
+
+.description {
+  color: #99A1AF;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.assignee {
+  color: #99A1AF;
+  font-size: 0.8rem;
+}
+
+.deadline {
+  color: #6B7280;
+  font-size: 0.75rem;
+}
