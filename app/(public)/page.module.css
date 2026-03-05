@@ -1,0 +1,263 @@
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 24px rgba(194, 122, 255, 0.45); }
+  50%       { box-shadow: 0 0 48px rgba(194, 122, 255, 0.85), 0 0 80px rgba(251, 100, 182, 0.3); }
+}
+
+@keyframes drift {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(-12px, -8px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── Root ───────────────────────────────────────────────── */
+.root {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #030712;
+}
+
+/* blueprint grid */
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(194, 122, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(194, 122, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: drift 30s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* center spotlight */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(194, 122, 255, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* vignette */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 45%, rgba(3, 7, 18, 0.85) 100%);
+  pointer-events: none;
+}
+
+/* scanlines */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.12) 3px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  pointer-events: none;
+}
+
+/* ── Container ──────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #C27AFF;
+  border: 1px solid rgba(194, 122, 255, 0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  background: rgba(194, 122, 255, 0.07);
+  animation: fadeUp 0.5s ease 0.05s both;
+}
+
+.badge::before,
+.badge::after {
+  content: '▪';
+  font-size: 0.5rem;
+  opacity: 0.5;
+}
+
+.title {
+  font-size: clamp(4rem, 12vw, 7.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: white;
+  line-height: 0.95;
+  display: flex;
+  align-items: center;
+  gap: 0.04em;
+  animation: fadeUp 0.5s ease 0.15s both;
+}
+
+.clockIcon {
+  display: inline-block;
+  color: #C27AFF;
+  filter: drop-shadow(0 0 14px rgba(194, 122, 255, 0.7));
+  width: 0.82em;
+  height: 0.82em;
+  flex-shrink: 0;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: #99A1AF;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  animation: fadeUp 0.5s ease 0.25s both;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C27AFF, transparent);
+  animation: fadeUp 0.5s ease 0.3s both;
+}
+
+/* ── Mission Cards ──────────────────────────────────────── */
+.missions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  width: 100%;
+  border: 1px solid rgba(194, 122, 255, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  animation: fadeUp 0.5s ease 0.4s both;
+}
+
+.missionCard {
+  background: rgba(10, 16, 29, 0.85);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-right: 1px solid rgba(194, 122, 255, 0.08);
+  transition: background 0.25s;
+}
+
+.missionCard:last-child {
+  border-right: none;
+}
+
+.missionCard:hover {
+  background: rgba(16, 24, 40, 0.95);
+}
+
+.missionIcon {
+  color: #C27AFF;
+  flex-shrink: 0;
+}
+
+.missionCard h3 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+}
+
+.missionCard p {
+  font-size: 0.875rem;
+  color: #99A1AF;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── CTA ────────────────────────────────────────────────── */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  animation: fadeUp 0.5s ease 0.55s both;
+}
+
+.registerBtn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, #C27AFF 0%, #FB64B6 100%);
+  color: white;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  animation: pulseGlow 3.5s ease-in-out infinite;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.registerBtn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+.loginPrompt {
+  font-size: 0.82rem;
+  color: #99A1AF;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.loginLink {
+  color: #C27AFF;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.loginLink:hover {
+  color: #FB64B6;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .missions {
+    grid-template-columns: 1fr;
+  }
+  .missionCard {
+    border-right: none;
+    border-bottom: 1px solid rgba(194, 122, 255, 0.08);
+  }
+  .missionCard:last-child {
+    border-bottom: none;
+  }
+}

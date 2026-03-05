@@ -12,10 +12,6 @@ npm run test     # Run Vitest (watch mode)
 npx vitest run   # Run tests once (CI mode)
 npx vitest run tests/components/Navbar.test.tsx  # Run a single test file
 ```
-### Git workflow
-```bash
-git switch -c <branch-name>
-```
 
 ## Architecture
 
@@ -38,12 +34,8 @@ Theme palette: purple `#C27AFF`, pink `#FB64B6`, dark backgrounds (`#030712`, `#
 
 ### Components
 
-Stored in `components/`. Each component lives in its own directory (`components/ComponentName/`) with a `ComponentName.tsx`, `ComponentName.module.css`, and an `index.ts` re-export. Current components:
-
-- `Navbar` — used in the dashboard layout
-- `Avatar` — displays initials, PascalCase-aware (e.g. `JohnDoe` → `JD`)
-- `AuthForm` — shared login/signup form, controlled by a `mode: "login" | "signup"` prop
+Stored in `components/` with barrel exports via `index.ts`. Currently only `Navbar` exists, used in the dashboard layout.
 
 ### Testing
 
-Vitest + Testing Library + happy-dom. Tests live in `tests/`. Path aliases (`@/*`) and React are configured in `vitest.config.mts`.
+Vitest + Testing Library + jsdom. Tests live in `tests/`. Path aliases (`@/*`) and React are configured in `vitest.config.mts`.
